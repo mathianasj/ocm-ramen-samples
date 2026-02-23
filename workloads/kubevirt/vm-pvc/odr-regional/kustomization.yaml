@@ -3,14 +3,6 @@
 resources:
   - ../base
 patches:
-  # Use masquerade network interface.
-  - target:
-      kind: VirtualMachine
-      name: vm
-    patch: |-
-      - op: add
-        path: /spec/template/spec/domain/devices/interfaces/0/masquerade
-        value: {}
   # Use internal ceph cluster.
   - target:
       kind: PersistentVolumeClaim
