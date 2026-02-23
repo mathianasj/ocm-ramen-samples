@@ -35,13 +35,6 @@ spec:
         - multus:
             networkName: default/nad-vlan101
           name: nic-ivory-marten-68
-      accessCredentials:
-        - sshPublicKey:
-            source:
-              secret:
-                secretName: my-public-key
-            propagationMethod:
-              configDrive: {}
       volumes:
         - name: root-disk
           persistentVolumeClaim:
