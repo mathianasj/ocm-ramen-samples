@@ -18,19 +18,23 @@ spec:
             - name: root-disk
               disk:
                 bus: virtio
-            - name: cloud-init
+            - name: cloudinitdisk
               disk:
                 bus: virtio
           interfaces:
-            - name: default
+            - bridge: {}
+              macAddress: '02:3c:0f:b5:e2:c2'
               model: virtio
+              name: nic-ivory-marten-68
+              state: up
         resources:
           requests:
             # See https://github.com/cirros-dev/cirros/issues/53
             memory: 256Mi
       networks:
-        - name: default
-          pod: {}
+        - multus:
+            networkName: default/nad-vlan101
+          name: nic-ivory-marten-68
       accessCredentials:
         - sshPublicKey:
             source:
@@ -42,8 +46,10 @@ spec:
         - name: root-disk
           persistentVolumeClaim:
             claimName: root-disk
-        - name: cloud-init
-          cloudInitConfigDrive:
-            userData: |
-              #!/bin/sh
-              echo "Running user-data script"
+        - cloudInitNoCloud:
+            userData: |-
+              #cloud-config
+              user: fedora
+              password: 4q8x-7ri1-usnl
+              chpasswd: { expire: False }
+          name: cloudinitdisk
