@@ -31,7 +31,7 @@ spec:
         resources:
           requests:
             # See https://github.com/cirros-dev/cirros/issues/53
-            memory: 256Mi
+            memory: 4Gi
       networks:
         - multus:
             networkName: default/nad-vlan101
