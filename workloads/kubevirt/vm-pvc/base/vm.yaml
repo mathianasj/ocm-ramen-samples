@@ -23,20 +23,17 @@ spec:
               disk:
                 bus: virtio
           interfaces:
-            - bridge: {}
-              masquerade: null
-              macAddress: '02:3c:0f:b5:e2:c2'
+            - binding:
+                name: l2bridge
               model: virtio
-              name: nic-ivory-marten-68
-              state: up
+              name: default
         resources:
           requests:
             # See https://github.com/cirros-dev/cirros/issues/53
             memory: 4Gi
       networks:
-        - multus:
-            networkName: default/nad-vlan101
-          name: nic-ivory-marten-68
+        - name: default
+          pod: {}
       volumes:
         - name: root-disk
           persistentVolumeClaim:
