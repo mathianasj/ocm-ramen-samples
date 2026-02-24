@@ -1,0 +1,7 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: drtest
+  labels:
+    k8s.ovn.org/primary-user-defined-network: ''
+spec: {}
