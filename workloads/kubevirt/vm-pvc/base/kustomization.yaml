@@ -3,6 +3,8 @@ resources:
   - source.yaml
   - pvc.yaml
   - vm.yaml
+  - namespace.yaml
+  - udn.yaml
 commonLabels:
   appname: vm
 secretGenerator:
